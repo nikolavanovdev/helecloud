@@ -8,9 +8,9 @@ provider "aws" {
 
 
 module "elb" {
-    source             = "./modules/lb"
-    vpc_id             = var.vpc_id 
-    subnets            = var.public_subnets_ids
+    source  = "./modules/lb"
+    vpc_id  = var.vpc_id 
+    subnets = var.public_subnets_ids
 }
 
 module "efs" {
@@ -39,7 +39,7 @@ module "rds" {
 }
 
 module "cloudwatch" {
-    source                        = "./modules/cloudwatch"
-    load_balancer_arn_suffix      = module.elb.load_balancer_arn_suffix   
-    target_group_arn_suffix       = module.elb.target_group_arn_suffix
+    source                   = "./modules/cloudwatch"
+    load_balancer_arn_suffix = module.elb.load_balancer_arn_suffix   
+    target_group_arn_suffix  = module.elb.target_group_arn_suffix
 }
